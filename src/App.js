@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import Contact from './componement/Contact';
+import {useHistory,BrowserRouter as Router, Route,Switch} from 'react-router-dom'
+import ListeContact from './componement/ListeContact';
+import ViewContact from './componement/ViewContact';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+     <Switch>
+    
+      <Route exact path = "/list">
+        <ListeContact />
+      </Route>
+      <Route path="/voir/:id" render={(props) =>  <ViewContact {...props} />}>
+        </Route>
+        <Route exact path = "/">
+        <Contact />
+         </Route>
+      </Switch>
     </div>
+    </Router>
   );
 }
 
